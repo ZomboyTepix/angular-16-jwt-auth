@@ -1,7 +1,67 @@
+<style>
+    /* Estilos CSS para la pantalla de usuario */
+    .profile {
+        background-color: #f2f2f2;
+        /* Color de fondo */
+        padding: 20px;
+        /* Espacio alrededor del contenido */
+        border-radius: 5px;
+        /* Bordes redondeados */
+    }
+
+    h3 {
+        color: #333;
+        /* Color del texto */
+        font-size: 18px;
+        /* Tamaño de la fuente */
+        margin-bottom: 10px;
+        /* Espacio debajo del título */
+    }
+
+    label {
+        font-weight: bold;
+        /* Texto en negrita */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        /* Ancho del campo de entrada */
+        padding: 10px;
+        /* Espacio dentro del campo de entrada */
+        margin-bottom: 10px;
+        /* Espacio debajo del campo de entrada */
+        border: 1px solid #ccc;
+        /* Borde del campo de entrada */
+        border-radius: 5px;
+        /* Bordes redondeados del campo de entrada */
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        /* Color de fondo del botón */
+        color: white;
+        /* Color del texto del botón */
+        padding: 10px 20px;
+        /* Espacio alrededor del texto del botón */
+        border: none;
+        /* Sin borde */
+        border-radius: 5px;
+        /* Bordes redondeados del botón */
+        cursor: pointer;
+        /* Cursor en forma de mano */
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+        /* Color de fondo del botón al pasar el cursor */
+    }
+</style>
 <div class="container" *ngIf="currentUser; else loggedOut">
     <header class="jumbotron">
         <h3>
-            <strong>{{ currentUser.username }}</strong> Profile
+            <strong>{{ currentUser.name }}</strong> Profile
         </h3>
     </header>
     <p>
@@ -14,6 +74,22 @@
             {{ role }}
         </li>
     </ul>
+</div>
+
+<div class="profile">
+    <h3>{{ currentUser.name }}</h3>
+    <form>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" placeholder="Escribe tu nombre" value="{{ currentUser.name }}">
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" placeholder="Escribe tu correo electrónico" value="{{ currentUser.email }}">
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" placeholder="Escribe tu contraseña">
+
+        <input type="submit" value="Actualizar perfil">
+    </form>
 </div>
 
 <ng-template #loggedOut>
